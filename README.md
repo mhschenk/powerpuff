@@ -62,3 +62,13 @@ The top five consonents present in the training dataset are:
 |184 |        ্র |   21397 |
 |183 |        ্য |   21270 |
 |180 |         ঁ |    7424 |
+
+
+### Early Results
+
+TBD...
+
+### Next Steps
+For the subsequent steps of our project, we will focus on improving the performance of this notebook. We can adjust training time (number of iterations), examine for over- or under-fitting, and adjust various aspects of the model architecture in order to find potential improvements. We also plan on examining the techniques used in the most effective models based on the best scoring kaggle notebooks, and potentially adapt them for use in our base model. 
+
+Stay tuned for further updates as we continue working on this project!
