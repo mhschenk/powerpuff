@@ -11,6 +11,7 @@ Like many in the class, we have started with [this notebook,](https://www.kaggle
 
 Because there are so many graphemes in Bengali, it's infeasible to look at all possible graphemes that might ultimately come through our model. Here are some statistics on the most common graphemes in our dataset. 
 
+The top ten roots in the training set are:
 
 |index      | component | count |
 |-----------|-----------|-------|
@@ -24,4 +25,20 @@ Because there are so many graphemes in Bengali, it's infeasible to look at all p
 |147 |         স |   4392 |
 |133 |         শ |   4374 |
 |115 |         ম |   4015 |
+
+The bottom ten roots in the training set are:
+
+
+|index | component |  count |
+|----|----|----|
+|73  |  দ্ঘ |    130 |
+|33  |  ঙ্ক্ত |    136 |
+|102 |  প্স |   141 |
+|158 |  স্স |    143 |
+|45  |  জ্জ্ব |    144 |
+|130 |  ল্ব |   144 |
+|1   | ঃ |    145 |
+|12  |  ঔ |    146 |
+|0   |   ং |    147 |
+|63  |  ণ্ণ |    149 |
 
