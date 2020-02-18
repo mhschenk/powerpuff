@@ -12,17 +12,16 @@ Like many in the class, we have started with [this notebook,](https://www.kaggle
 Because there are so many graphemes in Bengali, it's infeasible to look at all possible graphemes that might ultimately come through our model. Here are some statistics on the most common graphemes in our dataset. 
 
 
-|      |index      | component | count |
-|------|-----------|-----------|-------|
-|72    |   72      |    দ      |   5736|
-64  &     64 &         ত &   5596 \\
-13  &     13 &         ক &   5420 \\
-107 &    107 &         ব &   5321 \\
-23  &     23 &         গ &   5149 \\
-96  &     96 &         প &   4926 \\
-113 &    113 &         ভ &   4395 \\
-147 &    147 &         স &   4392 \\
-133 &    133 &         শ &   4374 \\
-115 &    115 &         ম &   4015 \\
-\bottomrule
-\end{tabular}
+|index      | component | count |
+|-----------|-----------|-------|
+|   72      |    দ      |   5736|
+|64 |       ত |  5596 |
+|13  |     13 |         ক |   5420 |
+|107 |    107 |         ব |   5321 |
+|23  |     23 |         গ |   5149 |
+|96  |     96 |         প |   4926 |
+|113 |    113 |         ভ |   4395 |
+|147 |    147 |         স |   4392 |
+|133 |    133 |         শ |   4374 |
+|115 |    115 |         ম |   4015 |
+
