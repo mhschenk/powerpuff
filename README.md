@@ -28,7 +28,6 @@ The top ten roots in the training set are:
 
 The bottom ten roots in the training set are:
 
-
 |index | component |  count |
 |----|----|----|
 |73  |  দ্ঘ |    130 |
@@ -42,3 +41,24 @@ The bottom ten roots in the training set are:
 |0   |   ং |    147 |
 |63  |  ণ্ণ |    149 |
 
+As you can see, there are many fewer examples of these bottom ten roots than the top ten. We expect that our model will do better on the components with more examples. This is something for us to consider as we start getting results. 
+
+The top five vowels in the training dataset (not including the diacritics that could be added) are:
+
+|index | component|  count|
+|---|---|---|
+|168 |         0 |  41508 |
+|169 |         া |  36886 |
+|175 |         ে |  28723 |
+|170 |         ি |  25967 |
+|172 |         ু |  18848 |
+
+The top five consonents present in the training dataset are:
+
+|index | component |   count|
+|---|---|---|
+|179 |         0 |  125278 |
+|181 |        র্ |   23465 |
+|184 |        ্র |   21397 |
+|183 |        ্য |   21270 |
+|180 |         ঁ |    7424 |
