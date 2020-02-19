@@ -66,7 +66,23 @@ The top five consonents present in the training dataset are:
 
 ### Early Results
 
+Thus far, we have run the model on four different subsets of training data. These graphs indicate that we should focus especially on increasing the accuracy of the model's classification of roots, as those consistently score the lowest across the different datasets. 
+
 <img src="graph0L.png">
+
+<img src="graph0A.png">
+
+<img src="graph1L.png">
+
+<img src="graph1A.png">
+
+<img src="graph2L.png">
+
+<img src="graph2A.png">
+
+<img src="graph3L.png">
+
+<img src="graph3A.png">
 
 ### Next Steps
 For the subsequent steps of our project, we will focus on improving the performance of this notebook. We can adjust training time (number of iterations), examine for over- or under-fitting, and adjust various aspects of the model architecture in order to find potential improvements. We also plan on examining the techniques used in the most effective models based on the best scoring kaggle notebooks, and potentially adapt them for use in our base model. 
