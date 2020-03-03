@@ -88,3 +88,16 @@ Thus far, we have run the model on four different subsets of training data. Thes
 For the subsequent steps of our project, we will focus on improving the performance of this notebook. We can adjust training time (number of iterations), examine for over- or under-fitting, and adjust various aspects of the model architecture in order to find potential improvements. We also plan on examining the techniques used in the most effective models based on the best scoring kaggle notebooks, and potentially adapt them for use in our base model. 
 
 Stay tuned for further updates as we continue working on this project!
+
+## Second Entry - March 3, 2020
+
+Welcome back! We've taken several steps to improve and refine our model, which we discuss below.
+
+### Augmenting Data
+
+One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. 
+
+
+## Third Entry - March 3, 2020
+
+Our model is now complete! This entry serves to explain the performance of our final model. 
