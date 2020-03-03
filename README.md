@@ -97,6 +97,8 @@ Welcome back! We've taken several steps to improve and refine our model, which w
 
 One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. 
 
+<img src = "change intensity.png">
+
 
 ## Third Entry - March 3, 2020
 
