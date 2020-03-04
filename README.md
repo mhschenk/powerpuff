@@ -116,4 +116,7 @@ An image with the intensity changed to make the character more clear:
 
 ## Third Entry - March 3, 2020
 
-Our model is now complete! This entry serves to explain the performance of our final model. 
+Our model is now complete! This entry serves to explain the performance of our final model. We've added a couple extra layers. Below you can find our new architecture.
+
+We got our new results by changing the architecture slightly and tuning hyper parameters using kerastuner (link). Our final performance is as follows:
+
