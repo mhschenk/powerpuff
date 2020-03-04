@@ -95,7 +95,21 @@ Welcome back! We've taken several steps to improve and refine our model, which w
 
 ### Augmenting Data
 
-One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. 
+One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. The original source for these modifications is [this notebook on Kaggle]("https://www.kaggle.com/chekoduadarsh/bengali-ai-understand-and-augment-eda"). We wrote our own function to apply the modifications to a subset of the training data and create a new dataframe.
+
+Here is an image with Gaussian noise added. The background and character are no longer just two separate colors.
+
+<img src = "gaussian noise.png">
+
+Here is an image rotated to the right...
+
+<img src = "rotate right.png">
+
+...and one rotated to the left.
+
+<img src = "rotate left.png">
+
+An image with the intensity changed to make the character more clear:
 
 <img src = "change intensity.png">
 
