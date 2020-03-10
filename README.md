@@ -116,8 +116,6 @@ An image with the intensity changed to make the character more clear:
 
 ## Third Entry - March 3, 2020
 
-Work Jounal Entry #3
-
 We’ve completed our changes to the model! We’ve approached improving the model from three major approaches:
 Data Augmentation
 Model architecture
@@ -125,7 +123,7 @@ Automated model hyperparameter
 
 For our third blog post, we’re going into depth about what changes we made to the base model and why. But first, let’s go through the original model in more detail.
 
-Original model
+## Original model
 
 We started by understanding --name--’s model. This user made his notebook digestable and public, which we really appreciated. Below, you can see the architecture of --name-- convolutional neural network. 
 
@@ -135,22 +133,22 @@ This network consists of multiple convolutional layers with an increasing number
 
 ---name--’s model performance is really good -- near 96% accuracy. Improving this score is difficult. We approached gaining improvements by focusing on 1) data augmentation, 2) Changing model architecture, and 3) Automated hyperparameter tuning with KerasTuner. 
 
-Data Augmentation
+## Data Augmentation
 
 What is data augmentation, why does it help, why did we choose the augmentations we chose, result from the augmentation (do we get a better score)
 
-Model Architecture
+## Model Architecture
 
 The original architecture proved to be extremely well scoring, so we didn’t want to change too much about the setup. Here are some graphs of the original model performace across epochs across four training sets.
 
 It should be noted that it is common for the validation sets to score much higher than training. This is due to the implementation of dropout that is active during training. This means that only some of the net is being used during training, while during validation the full learned network is used. 
 
 We attempted to add three changes to this architecture:
-Removing and changing dropout layers
-Adding GlobalAveragePooling2D
-Adding DepthwiseMaxPooling
+1. Removing and changing dropout layers
+2. Adding GlobalAveragePooling2D
+3. Adding DepthwiseMaxPooling
 
-Removing and changing dropout layers
+### Removing and changing dropout layers
 
 Rationale: Dropout helps prevent overfitting. Our hunch was that, potentially, we were underfitting and decreasing the number of dropout layers could help with this. 
 
@@ -160,7 +158,7 @@ Implementation:
 Results: Somewhat unsurprisingly, changing the dropout layer architecture in the above two ways was not successful. We did not bother reporting the scores here since accuracy decreased.
 
 
-Results: Adding Global AveragePooling2D
+### Adding Global AveragePooling2D
 
 Rationale: Global average pooling averages every feature map at the end of a neural net and can be used in place of the flatten() function. This is of course, extremely destructive, since feature maps are compressed into the average of their pixels. However, this can be useful in making the model invariant to characterisitcs we would rather a handwriting model not pick up, such as line thickness and hand slant. Additionally, global average pooling is used in some famous architectures (list).
 
@@ -169,7 +167,7 @@ Model architecture image -
 
 Results: We improved the score by ______. One major drawback, however: this model takes much longer to run from this addition. For comparison, the original model runs 15 epochs with a batch size of 256 in ~5 minutes. With global average pooling, the model runs the same number of epochs in ~ 30 minutes. Running these models multiple times to get an average score, we’re looking at a difference (2 hours - 20 minutes) of about 1 hour and 40 minutes. 
 
-Results: Adding DepthwiseMaxPooling
+### Adding DepthwiseMaxPooling
 
 Rationale: Another uncommonly implemented method, depthwise max pooling pools across different feature maps (the batch dimension!) in a convolutional layer. Generally, pooling is applied in the XY of the image alone. This type of pooling is mainly useful for handwriitng recogition classification problems. This is because pooling over the depth of the filter can help make the model invariant to the spatial differences in the image-- basically, you want a model that’s going to recognize the character no matter where it is in the image, and regardless of orientation or slant. This is also used in a number of famous architectures (list).
 
@@ -185,7 +183,7 @@ We tried other functions that looked similar to depthpooling such as MaxPooling3
 -Screenshot documentation-
  Our hunch, however, is that this was created for 3D data, not 2D data with batching across multiple feature maps, because the input for maxpooling3D expects a 4 dimension input (number of images in the stack, imagesizex, imagesizey, channels). We tried training with the following 3D model, but the rest of the model is written for 2D data-- this contributes to our hunch that MaxPooling3D does not have the same functionality as Depthwise Pooling.
 
-Automated hyperparameter tuning with KerasTuner
+## Automated hyperparameter tuning with KerasTuner
 
 What is automated hyperparameter tuning, why do we need it, what’s our result (did we get a new score) 
 
