@@ -125,13 +125,13 @@ For our third blog post, we’re going into depth about what changes we made to 
 
 ## Original model
 
-We started by understanding --name--’s model. This user made his notebook digestable and public, which we really appreciated. Below, you can see the architecture of --name-- convolutional neural network. 
+We started by understanding Kaushal Shah’s model. This user made his notebook digestable and public, which we really appreciated. Below, you can see the architecture of Kaushal Shah's convolutional neural network. You can find his full notebook [here] <https://www.kaggle.com/kaushal2896/bengali-graphemes-starter-eda-multi-output-cnn> 
 
-[model.png]
+<img src = "original_model.png">
 
 This network consists of multiple convolutional layers with an increasing number of filters. Every four layers is followed by a batch normalization to protect against exploding/ diminishing gradient issues, as well as a max pooling layer. Here, pooling is done spatially (2D), meaning only the most informative pixels in a certain pool size is taken to the next layer. This decreases the overall size of the image, decreasing computation time. Dropout is added after pooling to reduce overfitting and spread learning across many neurons and many layers. Finally, the outputs are flattened into a 1D array and run through 3 dense layers with “softmax” activation corresponding to the three predictions we are making (list the types of diacritics here).
 
----name--’s model performance is really good -- near 96% accuracy. Improving this score is difficult. We approached gaining improvements by focusing on 1) data augmentation, 2) Changing model architecture, and 3) Automated hyperparameter tuning with KerasTuner. 
+Kaushal's model performance is really good -- 95.6% accuracy. Improving this score is difficult. We approached gaining improvements by focusing on 1) data augmentation, 2) Changing model architecture, and 3) Automated hyperparameter tuning with KerasTuner. 
 
 ## Data Augmentation
 
@@ -139,9 +139,14 @@ What is data augmentation, why does it help, why did we choose the augmentations
 
 ## Model Architecture
 
-The original architecture proved to be extremely well scoring, so we didn’t want to change too much about the setup. Here are some graphs of the original model performace across epochs across four training sets.
+The original architecture proved to be extremely well scoring, so we didn’t want to change too much about the setup. Here are some graphs of the original model performace across epochs across four training sets:
 
-It should be noted that it is common for the validation sets to score much higher than training. This is due to the implementation of dropout that is active during training. This means that only some of the net is being used during training, while during validation the full learned network is used. 
+<img src = "graphs/plot_acc_original_0.png">
+<img src = "graphs/plot_acc_original_1.png">
+<img src = "graphs/plot_acc_original_2.png">
+<img src = "graphs/plot_acc_original_3.png">
+
+It should be noted that it is common for the validation sets to score much higher than training. This is due to the implementation of dropout that is active during training. This means that only some of the neural network is being used during training (some neurons are dropped out), while during validation the full learned network is used. 
 
 We attempted to add three changes to this architecture:
 1. Removing and changing dropout layers
@@ -152,20 +157,30 @@ We attempted to add three changes to this architecture:
 
 Rationale: Dropout helps prevent overfitting. Our hunch was that, potentially, we were underfitting and decreasing the number of dropout layers could help with this. 
 
-Implementation:
-- dropout architecture image -
+Implementation: We played around with various droupout momentum and by removing the dropout layers closest to the output. 
 
-Results: Somewhat unsurprisingly, changing the dropout layer architecture in the above two ways was not successful. We did not bother reporting the scores here since accuracy decreased.
+Results: Somewhat unsurprisingly, changing the dropout layer architecture in the above two ways was not successful. We did not bother reporting the scores here since accuracy decreased. This is clearly observed in the following training-validation accuracy plots. Shown here are 2 representative training-validation plots from two different dropout architecture outputs.
 
+<img src = "plot_acc_dropout_edit_3.png">
+<img src = "plot_acc_dropout_last2layers_3.png">
 
 ### Adding Global AveragePooling2D
 
-Rationale: Global average pooling averages every feature map at the end of a neural net and can be used in place of the flatten() function. This is of course, extremely destructive, since feature maps are compressed into the average of their pixels. However, this can be useful in making the model invariant to characterisitcs we would rather a handwriting model not pick up, such as line thickness and hand slant. Additionally, global average pooling is used in some famous architectures (list).
+Rationale: Global average pooling averages every feature map at the end of a neural net and can be used in place of the flatten() function. This is of course, extremely destructive, since feature maps are compressed into the average of their pixels. However, this can be useful in making the model invariant to characterisitcs we would rather a handwriting model not pick up, such as line thickness and hand slant. Additionally, global average pooling is used in some famous architectures, such as GoogLeNet and Xception.
 
 Implementation: 
-Model architecture image - 
 
-Results: We improved the score by ______. One major drawback, however: this model takes much longer to run from this addition. For comparison, the original model runs 15 epochs with a batch size of 256 in ~5 minutes. With global average pooling, the model runs the same number of epochs in ~ 30 minutes. Running these models multiple times to get an average score, we’re looking at a difference (2 hours - 20 minutes) of about 1 hour and 40 minutes. 
+Our new architecture is the same as the original, but replaces the final flatten() layer with a GlobalAveragePooling2D layer.
+
+ - Model architecture image -
+
+
+Results: We improved the score by ______. One major drawback, however: this model takes much longer to run from this addition. For comparison, the original model runs 15 epochs with a batch size of 256 in ~5 minutes. With global average pooling, the model runs the same number of epochs in ~ 30 minutes. Running these models multiple times to get an average score, we’re looking at a difference (2 hours - 20 minutes) of about 1 hour and 40 minutes. Our accuracy plots can be found below for 4 training-validation sets.
+
+<img src = "graphs/plot_acc_globalaveragepooling_0.png">
+<img src = "graphs/plot_acc_globalaveragepooling_1.png">
+<img src = "graphs/plot_acc_globalaveragepooling_2.png">
+<img src = "graphs/plot_acc_globalaveragepooling_3.png">
 
 ### Adding DepthwiseMaxPooling
 
@@ -176,12 +191,19 @@ Implementation:
 Depthwise pooling should be placed after the convolutional layers and batch normalization. Here, implementation is attempted using a lower level tensorflow api wrapped in a Keras lambda function (a custom layer). 
 
 Results:
-Unfortunately, we weren’t able to successfully train with this change. We ran into a number of different errors including: 
-The function isn’t configured for anything but CPU processing
-MaxPoolingGrad is not implemented for 
+Unfortunately, we weren’t able to successfully train with this change. We ran into a number of different errors including:
+
+<img src = "graphs/error_message_depthwisepooling.png"> 
+
+and if we tried to run on CPU alone, 
+
+<img src = "graphs/error_message_depthwisepooling.png">
+
 We tried other functions that looked similar to depthpooling such as MaxPooling3D keras function.
--Screenshot documentation-
- Our hunch, however, is that this was created for 3D data, not 2D data with batching across multiple feature maps, because the input for maxpooling3D expects a 4 dimension input (number of images in the stack, imagesizex, imagesizey, channels). We tried training with the following 3D model, but the rest of the model is written for 2D data-- this contributes to our hunch that MaxPooling3D does not have the same functionality as Depthwise Pooling.
+
+<img src = "graphs/Screen Shot 2020-03-10 at 6.17.22 PM.png">
+
+Our hunch, however, is that this was created for 3D data, not 2D data with batching across multiple feature maps, because the input for maxpooling3D expects a 4 dimension input (number of images in the stack, imagesizex, imagesizey, channels). We tried training with the following 3D model, but the rest of the model is written for 2D data-- this contributes to our hunch that MaxPooling3D does not have the same functionality as Depthwise Pooling.
 
 ## Automated hyperparameter tuning with KerasTuner
 
