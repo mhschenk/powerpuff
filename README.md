@@ -174,8 +174,7 @@ Implementation:
 
 Our new architecture is the same as the original, but replaces the final flatten() layer with a GlobalAveragePooling2D layer.
 
- - Model architecture image -
-
+<img src = graphs/final_image.png">
 
 Results: We improved the score by ______. One major drawback, however: this model takes much longer to run from this addition. For comparison, the original model runs 15 epochs with a batch size of 256 in ~5 minutes. With global average pooling, the model runs the same number of epochs in ~ 30 minutes. Running these models multiple times to get an average score, we’re looking at a difference (2 hours - 20 minutes) of about 1 hour and 40 minutes. Our accuracy plots can be found below for 4 training-validation sets.
 
