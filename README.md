@@ -95,7 +95,7 @@ Welcome back! We've taken several steps to improve and refine our model, which w
 
 ### Augmenting Data
 
-One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. The original source for these modifications is [this notebook on Kaggle]("https://www.kaggle.com/chekoduadarsh/bengali-ai-understand-and-augment-eda"). We wrote our own function to apply the modifications to a subset of the training data and create a new dataframe.
+One of the most fundamental ways to improve the performance of a neural net model is to train it on more data. The more data a model has seen, the more precisely it can estimate parameters and the better it can handle new, unseen data. We've taken a similar approach to other teams who have publicly posted their notebooks on Kaggle, which is to augment our data with altered versions of the existing images. We've added Gaussian noise, rotated the images left and right, and heightened the clarity. Examples of these modifications are shown below. The original source for these modifications is [this notebook on Kaggle]("https://www.kaggle.com/chekoduadarsh/bengali-ai-understand-and-augment-eda"). We wrote a series of functions to apply the modifications to a subset of the training data and create new dataframes. We created four, one with each of the modifications below applied. 
 
 Here is an image with Gaussian noise added. The background and character are no longer just two separate colors.
 
@@ -113,8 +113,10 @@ An image with the intensity changed to make the character more clear:
 
 <img src = "change intensity.png">
 
+We then converted the dataframe into a parquet file that matches the format of the original files, keeping the original image ID number attached to each altered image. This will allow us to feed the new data through our existing pipeline. The augmentation code worked on a single image at a time and output a two dimensional array that lent itself to plotting. In order to retain the original image id (needed for our training loop later), we wrote a for-loop and saved each output in a dictionary, with the image id as a key. The entries, then, were two dimensional. So although that could be converted into a dataframe, it could not then be converted to a parquet file. We solved this problem by flattening the image before adding it to the dictionary. We then had to make some additional adjustments to the indexing in order to make a parquet file that looked like an exact match to the original training files, as well as converting the numbers from floats to the CV-8UC1 format. In the end, we have four additional training files for our model.
 
-## Third Entry - March 3, 2020
+
+## Third Entry - March 11, 2020
 
 We’ve completed our changes to the model! We’ve approached improving the model from three major approaches:
 Data Augmentation
@@ -135,7 +137,7 @@ Kaushal's model performance is really good -- 95.6% accuracy. Improving this sco
 
 ## Data Augmentation
 
-What is data augmentation, why does it help, why did we choose the augmentations we chose, result from the augmentation (do we get a better score)
+Data augmentation means artificially increasing the size of your training set by distorting the existing images and then feeding them through the model as new images. So in addition to altering the architecture of the model, we've created four new datasets of altered images to allow the model more training opportunities. We discussed the four modifications we made in our second blog post. We chose those because they seemed to most closely resemble the sorts of things the model will encounter in the real world. Adding gaussian noise mimics an unclear photocopy the model might encounter. Similarly, altering the intensity reflects the fact that handwritten documents are not uniform in their color contrast. Rotating left and right mimics the fact that handwriting is rarely perfectly straight. Flipping an image is another common way to alter image data, but we did not use this because it is highly unlikely that a model meant to parse handwriting would encounter mirror-image letters.
 
 ## Model Architecture
 
