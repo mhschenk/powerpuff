@@ -91,7 +91,7 @@ Stay tuned for further updates as we continue working on this project!
 
 ## Second Entry - March 3, 2020
 
-Welcome back! We've taken several steps to improve and refine our model, which we discuss below.
+Welcome back! In addition to working on the model itself, we've worked on the training data we're feeding into the model. This entry explains that process in greater detail.
 
 ### Augmenting Data
 
