@@ -174,7 +174,7 @@ Implementation:
 
 Our new architecture is the same as the original, but replaces the final flatten() layer with a GlobalAveragePooling2D layer.
 
-<img src = graphs/final_image.png">
+<img src = "graphs/final_image.png">
 
 Results: We improved the score by ______. One major drawback, however: this model takes much longer to run from this addition. For comparison, the original model runs 15 epochs with a batch size of 256 in ~5 minutes. With global average pooling, the model runs the same number of epochs in ~ 30 minutes. Running these models multiple times to get an average score, we’re looking at a difference (2 hours - 20 minutes) of about 1 hour and 40 minutes. Our accuracy plots can be found below for 4 training-validation sets.
 
@@ -188,8 +188,6 @@ Results: We improved the score by ______. One major drawback, however: this mode
 Rationale: Another uncommonly implemented method, depthwise max pooling pools across different feature maps (the batch dimension!) in a convolutional layer. Generally, pooling is applied in the XY of the image alone. This type of pooling is mainly useful for handwriitng recogition classification problems. This is because pooling over the depth of the filter can help make the model invariant to the spatial differences in the image-- basically, you want a model that’s going to recognize the character no matter where it is in the image, and regardless of orientation or slant. This is also used in a number of famous architectures (list).
 
 Implementation: 
-
-<img src = "final_model.png">
 
 Depthwise pooling should be placed after the convolutional layers and batch normalization. Here, implementation is attempted using a lower level tensorflow api wrapped in a Keras lambda function (a custom layer). 
 
