@@ -194,7 +194,7 @@ Depthwise pooling should be placed after the convolutional layers and batch norm
 Results:
 Unfortunately, we weren’t able to successfully train with this change. We ran into a number of different errors including:
 
-<img src = "graphs/error_message_depthwisepooling.png"> 
+<img src = "graphs/unimplemented_error_max_depth_pooling.png"> 
 
 and if we tried to run on CPU alone, 
 
