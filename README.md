@@ -189,7 +189,7 @@ Results: We improved the score by ______. One major drawback, however: this mode
 Rationale: Another uncommonly implemented method, depthwise max pooling pools across different feature maps (the batch dimension!) in a convolutional layer. Generally, pooling is applied in the XY of the image alone. This type of pooling is mainly useful for handwriitng recogition classification problems. This is because pooling over the depth of the filter can help make the model invariant to the spatial differences in the image-- basically, you want a model that’s going to recognize the character no matter where it is in the image, and regardless of orientation or slant. This is also used in a number of famous architectures (list).
 
 Implementation: 
--model architecture- 
+<img src = "graphs/final_model.png">
 Depthwise pooling should be placed after the convolutional layers and batch normalization. Here, implementation is attempted using a lower level tensorflow api wrapped in a Keras lambda function (a custom layer). 
 
 Results:
