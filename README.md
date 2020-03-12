@@ -208,5 +208,19 @@ Our hunch, however, is that this was created for 3D data, not 2D data with batch
 
 ## Automated hyperparameter tuning with KerasTuner
 
-What is automated hyperparameter tuning, why do we need it, what’s our result (did we get a new score) 
+Rationale: To supplement our work with the model architecture, we tried to implement automated hyperparameter tuning with KerasTuner. KerasTuner is a package designed to implement a model multiple times with different hyperparameters in order to find the best outcome based on a predetermined objective. Hyperparameter tuning would allow for an improved version of the model to then be trained, which could result in increased performance.
+
+Implementation: While we were able to make a version of the model with KerasTuner, several issues ultimately prevented it from being effective.
+
+First, KerasTuner requires a significantly newer version of Tensorflow than was previously used by our model. Currently, even the working notebook requires a mid-session restart of runtime in order to function properly. In addition, KerasTuner is unintuitive to work with within the training loop as it exists in the basic model.
+
+Second, KerasTuner is a slow process. Considering the complexity of the model architecture, an exhaustive search would be extremely time-intensive. Even with the limited set of parameters tested, running the training loop often took an order of magnitude longer than the training loop with the basic model. It may be possible to implement a new objective that uses the combined accuracy of all three outputs, but this type of modification would require more research into the design of kerastuner, which was not possible for this project.
+
+Last, KerasTuner is designed with a single objective. For this particular model, accuracy would be the most intuitive choice for that objective. However, the model we were using had three outputs. This means that the tuner, as it stands, can only optimize for the accuracy of one part of the output. This can result in a model with extremely variable accuracies, such as a root accuracy of 14%, and a vowel accuracy of 80%. 
+
+MAYBE PUT AN IMAGE HERE
+
+Results: Due to these reasons, while we were able to implement a version of the model that ran with automated hyperparameter tuning, it severely underperformed when compared to the basic model.
+
+In the future, KerasTuner may have the potential to be a promising addition to this project, if given more time -- both to run tests and, most importantly, to implement a new objective for the tuner.
 
