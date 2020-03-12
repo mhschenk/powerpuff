@@ -161,9 +161,8 @@ Rationale: Dropout helps prevent overfitting. Our hunch was that, potentially, w
 
 Implementation: We played around with various droupout momentum and by removing the dropout layers closest to the output. 
 
-Results: Somewhat unsurprisingly, changing the dropout layer architecture in the above two ways was not successful. We did not bother reporting the scores here since accuracy decreased. This is clearly observed in the following training-validation accuracy plots. Shown here are 2 representative training-validation plots from two different dropout architecture outputs.
+Results: Somewhat unsurprisingly, changing the dropout layer architecture in the above two ways was not successful. We did not bother reporting the scores here since accuracy decreased. This is clearly observed in the following training-validation accuracy plots. Shown here is a representative training-validation plot from varying the dropout architecture. You can see that the vowel accuracy has gone down to about 0.92, while before it was slightly higher (see original accuracy plots).
 
-<img src = "graphs/plot_acc_dropout_edit_3.png">
 <img src = "graphs/plot_acc_dropout_last2layers_3.png">
 
 ### Adding Global AveragePooling2D
