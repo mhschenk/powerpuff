@@ -218,7 +218,7 @@ Second, KerasTuner is a slow process. Considering the complexity of the model ar
 
 Last, KerasTuner is designed with a single objective. For this particular model, accuracy would be the most intuitive choice for that objective. However, the model we were using had three outputs. This means that the tuner, as it stands, can only optimize for the accuracy of one part of the output. This can result in a model with extremely variable accuracies, such as a root accuracy of 14%, and a vowel accuracy of 80%. 
 
-MAYBE PUT AN IMAGE HERE
+<img src = "graphs/Screen Shot 2020-03-11 at 8.48.00 PM.png">
 
 Results: Due to these reasons, while we were able to implement a version of the model that ran with automated hyperparameter tuning, it severely underperformed when compared to the basic model.
 
