@@ -6,8 +6,8 @@ IMPORTANT NOTE:
 Please be sure to download bengali_cv19.zip if you plan to run our notebook locally. You can find it in our [google drive](https://drive.google.com/open?id=1iiedL5RsjsnZKaw8gY4yZAZPbGdP9ce1). Alternatively, you can open our notebook in colab in the google drive and the associated files are already in the specified folders. 
 
 [Bengali language background and model selection: February 18th, 2020](https://github.com/mhschenk/powerpuff/blob/master/README.md#first-entry---february-18-2020)
-[Data Augmentation: March 3, 2020]
-[A Summary of Our Work: March 11, 2020]
+[Data Augmentation: March 3, 2020](https://github.com/mhschenk/powerpuff/blob/master/README.md#second-entry---march-3-2020)
+[A Summary of Our Work: March 11, 2020](https://github.com/mhschenk/powerpuff/blob/master/README.md#third-entry---march-11-2020)
 
 ## First Entry - February 18, 2020
 
