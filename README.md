@@ -3,7 +3,7 @@
 The Powerpuff Girls are a team of students from Brown University's DATA 2040 Class: Amanda Khoo, Laura McCallion, and Marie Schenk. Follow our progress through our midterm project assignment here!
 
 IMPORTANT NOTE:
-Please be sure to download bengali_cv19.zip if you plan to run our notebook locally. You can find it in our [google drive] (https://drive.google.com/open?id=1iiedL5RsjsnZKaw8gY4yZAZPbGdP9ce1). Alternatively, you can open our notebook in colab in the google drive and the associated files are already in the specified folders. 
+Please be sure to download bengali_cv19.zip if you plan to run our notebook locally. You can find it in our [google drive](https://drive.google.com/open?id=1iiedL5RsjsnZKaw8gY4yZAZPbGdP9ce1). Alternatively, you can open our notebook in colab in the google drive and the associated files are already in the specified folders. 
 
 ## First Entry - February 18, 2020
 
