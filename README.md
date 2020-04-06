@@ -5,8 +5,6 @@ The Powerpuff Girls are a team of students from Brown University's DATA 2040 Cla
 IMPORTANT NOTE:
 Please be sure to download bengali_cv19.zip if you plan to run our notebook locally. You can find it in our [google drive](https://drive.google.com/open?id=1iiedL5RsjsnZKaw8gY4yZAZPbGdP9ce1). Alternatively, you can open our notebook in colab in the google drive and the associated files are already in the specified folders. 
 
-[First Entry](#first-entry)
-
 ## First Entry - February 18, 2020
 
 Hello! Welcome to our blog, which will detail our progress through our midterm project for the class DATA 2040 at Brown University. The project is the [Kaggle competition](https://www.kaggle.com/c/bengaliai-cv19) to classify handwritten graphemes of the Bengali language. As explained on the competition homepage, a grapheme is the smallest unit of a written language. Graphemes represent individual sounds in the words of a language Bengali has 18 accents (or diacritics)  that can be added to its 49 letters. The combination of diacritic and letter makes up a grapheme. Therefore, Bengali has many more graphemes than English does, and the task of identifying and classifying handwritten Bengali graphemes is more complicated than in English. If you're interested in understanding more about the Bengali alphabet, we recommend [these slides](https://bengali.ai/wp-content/uploads/CV19-COCO-Grapheme.pdf) and [this website](http://www.lingvozone.com/Bengali). 
